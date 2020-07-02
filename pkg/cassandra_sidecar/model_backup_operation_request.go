@@ -9,8 +9,6 @@
  */
 package cassandra_sidecar
 
-import "time"
-
 type BackupOperationRequest struct {
 	// type of operation, one has to set it to 'backup' in case he wants this request to be considered as a backup one 
 	Type_ string `json:"type"`
@@ -19,7 +17,7 @@ type BackupOperationRequest struct {
 	// directory of Cassandra, by default it is /var/lib/cassandra, in this path, one expects there is 'data' directory 
 	CassandraDirectory string `json:"cassandraDirectory,omitempty"`
 	// Based on this field, there will be throughtput per second computed based on what size data we want to upload we have. The formula is \"size / duration\". The lower the duration is, the higher throughput per second we will need and vice versa. This will influence e.g. responsiveness of a node to its business requests so one can control how much bandwidth is used for backup purposes in case a cluster is fully operational. The format of this field is \"amount unit\". 'unit' is just a (case-insensitive) java.util.concurrent.TimeUnit enum value. If not used, there will not be any restrictions as how fast an upload can be. 
-	Duration *time.Time `json:"duration,omitempty"`
+	Duration string `json:"duration,omitempty"`
 	Bandwidth *DataRate `json:"bandwidth,omitempty"`
 	// number of threads used for upload, there might be at most so many uploading threads at any given time, when not set, it defaults to 10 
 	ConcurrentConnections int32 `json:"concurrentConnections,omitempty"`
