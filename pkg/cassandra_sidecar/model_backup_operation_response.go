@@ -12,7 +12,7 @@ package cassandra_sidecar
 type BackupOperationResponse struct {
 	// type of operation, one has to set it to 'backup' in case he wants this request to be considered as a backup one 
 	Type_ string `json:"type"`
-	// location where SSTables will be uploaded. A value of the storageLocation property has to have exact format which is 'protocol://bucket/clusterName/dcName/nodeName'. protocol is either 'gcp', 's3', 'azure' or 'file:/'. For global requests, dcName and nodeName are changed automatically as these values are read from Cassandra and storageLocation is updated automatically for every node a specific backup request will be submitted to so the value of dcName and nodeName is irrelevant for global requests as they will be modified every time, a bucket does not need to exist, it will be created automatically if it does not, clusterName has to be specified. There might be automatic resolution of clusterName in the future however for now, one has to supply this property on his own. 
+	// location where SSTables will be uploaded. A value of the storageLocation property has to have exact format which is 'protocol://bucket/clusterName/dcName/nodeName'. protocol is either 'gcp', 's3', 'azure', 'oracle' or 'file:/'. For global requests, clusterName, dcName and nodeName do not need to be specified, so location would look like 's3://my-bucket'. 
 	StorageLocation string `json:"storageLocation"`
 	// directory of Cassandra, by default it is /var/lib/cassandra, in this path, one expects there is 'data' directory 
 	CassandraDirectory string `json:"cassandraDirectory,omitempty"`
@@ -35,6 +35,8 @@ type BackupOperationResponse struct {
 	K8sSecretName string `json:"k8sSecretName,omitempty"`
 	// flag saying if this request is meant to be global or not, once a global backup request is submitted to Sidecar, it will coordinate backup for all other nodes in a cluster (including itself) so from a point of view of a caller, one might just backup whole cluster by one request and repeatedly query its status based on returned operation id. 
 	GlobalRequest bool `json:"globalRequest,omitempty"`
+	// If snapshotTag represents existing snapshot and this flag is not set, that snapshot will be deleted. If snapshot exists and this flag is specified, whole request will fail because it can not take a snapshot with same name. 
+	KeepExistingSnapshot bool `json:"keepExistingSnapshot,omitempty"`
 	// unique identifier of an operation, a random id is assigned to each operation after a request is submitted, from caller's perspective, an id is sent back as a response to his request so he can further query state of that operation, referencing id, by operations/{id} endpoint 
 	Id string `json:"id"`
 	// state of an operation, operation might be in various states, PENDING - this operation is pending for being submitted. RUNNING - this operation is actively doing its job, COMPLETED - this operation has finished successfully, CANCELLED - this operation was interrupted while being run, FAILED - this operation has finished errorneously 
