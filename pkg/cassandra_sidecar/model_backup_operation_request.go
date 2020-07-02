@@ -9,8 +9,6 @@
  */
 package cassandra_sidecar
 
-import "time"
-
 type BackupOperationRequest struct {
 	// type of operation, one has to set it to 'backup' in case he wants this request to be considered as a backup one 
 	Type_ string `json:"type"`
