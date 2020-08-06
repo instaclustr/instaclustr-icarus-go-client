@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **K8sSecretName** | **string** | name of Kubernetes secret from which credentials used for the communication to cloud storage providers are read, if not specified, secret name to be read will be automatically derived in form &#x27;cassandra-backup-restore-secret-cluster-{name-of-cluster}&#x27;. These secrets are used only in case protocol in storageLocation is gcp, azure or s3.  | [optional] [default to null]
 **GlobalRequest** | **bool** | flag saying if this request is meant to be global or not, once a global backup request is submitted to Sidecar, it will coordinate backup for all other nodes in a cluster (including itself) so from a point of view of a caller, one might just backup whole cluster by one request and repeatedly query its status based on returned operation id.  | [optional] [default to null]
 **KeepExistingSnapshot** | **bool** | If snapshotTag represents existing snapshot and this flag is not set, that snapshot will be deleted. If snapshot exists and this flag is specified, whole request will fail because it can not take a snapshot with same name.  | [optional] [default to null]
+**Timeout** | **int32** | number of hours to wait until backup is considered failed if not finished already  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

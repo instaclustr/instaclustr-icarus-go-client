@@ -37,6 +37,8 @@ type BackupOperationResponse struct {
 	GlobalRequest bool `json:"globalRequest,omitempty"`
 	// If snapshotTag represents existing snapshot and this flag is not set, that snapshot will be deleted. If snapshot exists and this flag is specified, whole request will fail because it can not take a snapshot with same name. 
 	KeepExistingSnapshot bool `json:"keepExistingSnapshot,omitempty"`
+	// number of hours to wait until backup is considered failed if not finished already 
+	Timeout int32 `json:"timeout,omitempty"`
 	// unique identifier of an operation, a random id is assigned to each operation after a request is submitted, from caller's perspective, an id is sent back as a response to his request so he can further query state of that operation, referencing id, by operations/{id} endpoint 
 	Id string `json:"id"`
 	// state of an operation, operation might be in various states, PENDING - this operation is pending for being submitted. RUNNING - this operation is actively doing its job, COMPLETED - this operation has finished successfully, CANCELLED - this operation was interrupted while being run, FAILED - this operation has finished errorneously 

@@ -51,4 +51,8 @@ type RestoreOperationRequest struct {
 	K8sNamespace string `json:"k8sNamespace,omitempty"`
 	// name of Kubernetes secret from which credentials used for the communication to cloud storage providers are read, if not specified, secret name to be read will be automatically derived in form 'cassandra-backup-restore-secret-cluster-{name-of-cluster}'. These secrets are used only in case protocol in storageLocation is gcp, azure or s3. 
 	K8sSecretName string `json:"k8sSecretName,omitempty"`
+	// number of hours to wait until restore is considered failed if not finished already 
+	Timeout int32 `json:"timeout,omitempty"`
+	// if set to true, host id of node to restore will be resolved from remote topology file located in a bucket by translating it from provided nodeId of storageLocation field 
+	ResolveHostIdFromTopology bool `json:"resolveHostIdFromTopology,omitempty"`
 }

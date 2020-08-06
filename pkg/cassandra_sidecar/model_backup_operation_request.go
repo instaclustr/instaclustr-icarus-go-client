@@ -37,4 +37,6 @@ type BackupOperationRequest struct {
 	GlobalRequest bool `json:"globalRequest,omitempty"`
 	// If snapshotTag represents existing snapshot and this flag is not set, that snapshot will be deleted. If snapshot exists and this flag is specified, whole request will fail because it can not take a snapshot with same name. 
 	KeepExistingSnapshot bool `json:"keepExistingSnapshot,omitempty"`
+	// number of hours to wait until backup is considered failed if not finished already 
+	Timeout int32 `json:"timeout,omitempty"`
 }

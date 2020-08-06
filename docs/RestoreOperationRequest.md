@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **GlobalRequest** | **bool** | flag saying that this request is a global one, meaning that a Sidecar this request is sent to will act as a restoration coordinator sending all other requests to each node in a cluster, for each phase.  | [optional] [default to null]
 **K8sNamespace** | **string** | name of Kubernetes namespace to fetch Kubernetes secret for restores from, when not specified, it defaults to &#x27;default&#x27;  | [optional] [default to null]
 **K8sSecretName** | **string** | name of Kubernetes secret from which credentials used for the communication to cloud storage providers are read, if not specified, secret name to be read will be automatically derived in form &#x27;cassandra-backup-restore-secret-cluster-{name-of-cluster}&#x27;. These secrets are used only in case protocol in storageLocation is gcp, azure or s3.  | [optional] [default to null]
+**Timeout** | **int32** | number of hours to wait until restore is considered failed if not finished already  | [optional] [default to null]
+**ResolveHostIdFromTopology** | **bool** | if set to true, host id of node to restore will be resolved from remote topology file located in a bucket by translating it from provided nodeId of storageLocation field  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
