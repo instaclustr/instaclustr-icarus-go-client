@@ -21,9 +21,7 @@ type BackupOperationRequest struct {
 	Bandwidth *DataRate `json:"bandwidth,omitempty"`
 	// number of threads used for upload, there might be at most so many uploading threads at any given time, when not set, it defaults to 10 
 	ConcurrentConnections int32 `json:"concurrentConnections,omitempty"`
-	// path to file which will be used for locking the critical logic dealing with backups, this locking is done by locking a file on a file system so other execution will not proceed until the former one has finished. By default, this path is System.getProperty(\"java.io.tmpdir\") + \"/global-transfer-lock\". 
-	LockFile string `json:"lockFile,omitempty"`
-	// name of snapshot to make so this snapshot will be uploaded to storage location. If not specified, the name of snapshot will be automatically generated and it will have name 'autosnap-milliseconds-since-epoch' 
+	// name of snapshot to make so this snapshot will be uploaded to storage location. If not specified, the name of snapshot will be automatically generated and it will have name 'autosnap-milliseconds-since-epoch'. There is a schema version automatically appended to this string, as well as a timestamp what that snapshot was taken. Both information are necessary in order to be able to distinguish between two backups with same name done against same schema version - but they are done at different time. The end user does not have to specify schema nor timestamp, it will be resovled automatically. 
 	SnapshotTag string `json:"snapshotTag,omitempty"`
 	// name of datacenter to backup, nodes in the other datacenter(s) will not be involved 
 	Dc string `json:"dc,omitempty"`
@@ -35,8 +33,12 @@ type BackupOperationRequest struct {
 	K8sSecretName string `json:"k8sSecretName,omitempty"`
 	// flag saying if this request is meant to be global or not, once a global backup request is submitted to Sidecar, it will coordinate backup for all other nodes in a cluster (including itself) so from a point of view of a caller, one might just backup whole cluster by one request and repeatedly query its status based on returned operation id. 
 	GlobalRequest bool `json:"globalRequest,omitempty"`
-	// If snapshotTag represents existing snapshot and this flag is not set, that snapshot will be deleted. If snapshot exists and this flag is specified, whole request will fail because it can not take a snapshot with same name. 
-	KeepExistingSnapshot bool `json:"keepExistingSnapshot,omitempty"`
 	// number of hours to wait until backup is considered failed if not finished already 
 	Timeout int32 `json:"timeout,omitempty"`
+	// Relevant during upload to S3-like bucket only. Specifies whether the metadata is copied from the source object or replaced with metadata provided in the request. Defaults to COPY. Consult com.amazonaws.services.s3.model.MetadatDirective for more information. 
+	MetadataDirective string `json:"metadataDirective,omitempty"`
+	// Relevant during upload to S3-like bucket only. If true, communication is done via HTTP instead of HTTPS. Defaults to false. 
+	Insecure bool `json:"insecure,omitempty"`
+	// Automatically creates a bucket if it does not exist. If a bucket does not exist, backup operation will fail. Defaults to false. 
+	CreateMissingBucket bool `json:"createMissingBucket,omitempty"`
 }

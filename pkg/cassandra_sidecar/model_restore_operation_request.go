@@ -17,8 +17,6 @@ type RestoreOperationRequest struct {
 	// similar to field in backup request but used for downloading files, not uploading them 
 	ConcurrentConnections int32 `json:"concurrentConnections,omitempty"`
 	// similar to field in backup request 
-	LockFile string `json:"lockFile,omitempty"`
-	// similar to field in backup request 
 	CassandraDirectory string `json:"cassandraDirectory,omitempty"`
 	// directory where one expects to find 'conf/cassandra.yaml' file in case we need to update it with initial tokens in case restoration strategy is IN_PLACE. 
 	CassandraConfigDirectory string `json:"cassandraConfigDirectory,omitempty"`
@@ -40,7 +38,7 @@ type RestoreOperationRequest struct {
 	NoDeleteDownloads bool `json:"noDeleteDownloads,omitempty"`
 	// flag saying if we should not download data from remote location as we expect them to be there already, defaults to false, setting this to true has sense only in case noDeleteDownloads was set to true in previous restoration requests 
 	NoDownloadData bool `json:"noDownloadData,omitempty"`
-	// version of schema we want to restore from, upon backup, a schema version is automatically appended to snapshot name and its manifest is uploaded under that name. In case we have two snapshots having same name, we might distinguish between them by this schema version. If schema version is not specified, we expect that there will be one and only one backup taken with respective snapshot name. This schema version has to match the version of a Cassandra node we are doing restore for (hence, by proxy, when global request mode is used, all nodes have to be on exact same schema version). 
+	// version of schema we want to restore from, upon backup, a schema version is automatically appended to snapshot name and its manifest is uploaded under that name (plus timestamp at the end). In case we have two snapshots having same name, we might distinguish between them by this schema version. If schema version is not specified, we expect that there will be one and only one backup taken with respective snapshot name. This schema version has to match the version of a Cassandra node we are doing restore for (hence, by proxy, when global request mode is used, all nodes have to be on exact same schema version). 
 	SchemaVersion string `json:"schemaVersion,omitempty"`
 	// flag saying if we indeed want a schema version of a running node match with schema version a snapshot is taken on. there might be cases when we want to restore a table for which its CQL schema has not changed but it has changed for other table / keyspace but a schema for that node has changed by doing that. 
 	ExactSchemaVersion bool `json:"exactSchemaVersion,omitempty"`
