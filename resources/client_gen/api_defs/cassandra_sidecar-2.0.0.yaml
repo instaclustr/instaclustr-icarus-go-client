@@ -430,14 +430,10 @@ components:
           type: integer
           description: |
             number of threads used for upload, there might be at most so many uploading threads at any given time, when not set, it defaults to 10
-        lockFile:
-          type: string
-          description: |
-            path to file which will be used for locking the critical logic dealing with backups, this locking is done by locking a file on a file system so other execution will not proceed until the former one has finished. By default, this path is System.getProperty("java.io.tmpdir") + "/global-transfer-lock".
         snapshotTag:
           type: string
           description: |
-            name of snapshot to make so this snapshot will be uploaded to storage location. If not specified, the name of snapshot will be automatically generated and it will have name 'autosnap-milliseconds-since-epoch'
+            name of snapshot to make so this snapshot will be uploaded to storage location. If not specified, the name of snapshot will be automatically generated and it will have name 'autosnap-milliseconds-since-epoch'. There is a schema version automatically appended to this string, as well as a timestamp what that snapshot was taken. Both information are necessary in order to be able to distinguish between two backups with same name done against same schema version - but they are done at different time. The end user does not have to specify schema nor timestamp, it will be resovled automatically.
           example: mySnapshot
         dc:
           type: string
@@ -460,14 +456,22 @@ components:
           type: boolean
           description: |
             flag saying if this request is meant to be global or not, once a global backup request is submitted to Sidecar, it will coordinate backup for all other nodes in a cluster (including itself) so from a point of view of a caller, one might just backup whole cluster by one request and repeatedly query its status based on returned operation id.
-        keepExistingSnapshot:
-          type: boolean
-          description: |
-            If snapshotTag represents existing snapshot and this flag is not set, that snapshot will be deleted. If snapshot exists and this flag is specified, whole request will fail because it can not take a snapshot with same name.
         timeout:
           type: integer
           description: |
             number of hours to wait until backup is considered failed if not finished already
+        metadataDirective:
+          type: string
+          description: |
+            Relevant during upload to S3-like bucket only. Specifies whether the metadata is copied from the source object or replaced with metadata provided in the request. Defaults to COPY. Consult com.amazonaws.services.s3.model.MetadatDirective for more information.
+        insecure:
+          type: boolean
+          description: |
+            Relevant during upload to S3-like bucket only. If true, communication is done via HTTP instead of HTTPS. Defaults to false.
+        createMissingBucket:
+          type: boolean
+          description: |
+            Automatically creates a bucket if it does not exist. If a bucket does not exist, backup operation will fail. Defaults to false.
     RestoreOperationRequest:
       type: object
       required:
@@ -500,10 +504,6 @@ components:
           type: integer
           description: |
             similar to field in backup request but used for downloading files, not uploading them
-        lockFile:
-          type: string
-          description: |
-            similar to field in backup request
         cassandraDirectory:
           type: string
           description: |
@@ -560,7 +560,7 @@ components:
         schemaVersion:
           type: string
           description: |
-            version of schema we want to restore from, upon backup, a schema version is automatically appended to snapshot name and its manifest is uploaded under that name. In case we have two snapshots having same name, we might distinguish between them by this schema version. If schema version is not specified, we expect that there will be one and only one backup taken with respective snapshot name. This schema version has to match the version of a Cassandra node we are doing restore for (hence, by proxy, when global request mode is used, all nodes have to be on exact same schema version).
+            version of schema we want to restore from, upon backup, a schema version is automatically appended to snapshot name and its manifest is uploaded under that name (plus timestamp at the end). In case we have two snapshots having same name, we might distinguish between them by this schema version. If schema version is not specified, we expect that there will be one and only one backup taken with respective snapshot name. This schema version has to match the version of a Cassandra node we are doing restore for (hence, by proxy, when global request mode is used, all nodes have to be on exact same schema version).
         exactSchemaVersion:
           type: boolean
           description: |
