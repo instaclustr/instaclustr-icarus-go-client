@@ -271,6 +271,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CassandraStatusException'
+  /topology:
+    get:
+      tags:
+        - topology
+      summary: returns topology of a cluster as seen from this node
+      responses:
+        "200":
+          description: returns a topology of a Cassandra cluster a node is part of
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterTopology'
+        "500":
+          description: Unable to resolve Cassandra cluster topology
+  /topology/{dc}:
+    get:
+      tags:
+        - topology
+      summary: returns topology of a datacenter of a cluster
+      parameters:
+        - name: dc
+          in: path
+          description: name of datacenter to resolve a topology of
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: returns a topology of a certain datacenter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterTopology'
+        "500":
+          description: Unable to resolve Cassandra cluster topology of specified datacenter
+
 components:
   schemas:
     CleanupOperationResponse:
@@ -904,6 +942,52 @@ components:
           type: string
           description: 'UUID representing a version of Cassandra node as reported by its StorageServiceMBean#getSchemaVersion'
           example: 329319a5-cc1b-3db3-8001-c179b4063d04
+    NodeTopology:
+      type: object
+      properties:
+        hostname:
+          type: string
+          description: hostname of Cassandra node
+          example: cassandra-test-cluster-dc1-west1-b-0
+        cluster:
+          type: string
+          description: name of a cluster this node belongs to
+          example: test-cluster
+        dc:
+          type: string
+          description: name of a data center this node belongs to
+          example: dc1
+        rack:
+          type: string
+          description: name of a rack this node belongs to
+          example: west1-b
+        nodeId:
+          type: string
+          description: Cassandra host id of this node
+          example: 8619f3e2-756b-4cb1-9b5a-4f1c1aa49af6
+        ipAddress:
+          type: string
+          description: IP address of a node
+          example: 10.244.2.82
+    ClusterTopology:
+      type: object
+      properties:
+        timestamp:
+          type: number
+          description: Timestamp this topology was created at
+          example: 1600645216879
+        clusterName:
+          type: string
+          description: name of a cluster
+          example: "test-cluster"
+        schemaVersion:
+          type: string
+          description: Database schema version of given cluster
+          example: f1159959-593d-33d1-9ade-712ea55b31ef
+        topology:
+          type: array
+          items:
+            $ref: '#/components/schemas/NodeTopology'
     CassandraSchemaVersionException:
       type: object
       properties:
