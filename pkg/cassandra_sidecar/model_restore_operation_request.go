@@ -53,4 +53,6 @@ type RestoreOperationRequest struct {
 	Timeout int32 `json:"timeout,omitempty"`
 	// if set to true, host id of node to restore will be resolved from remote topology file located in a bucket by translating it from provided nodeId of storageLocation field 
 	ResolveHostIdFromTopology bool `json:"resolveHostIdFromTopology,omitempty"`
+	// Do not check the existence of a bucket. Some storage providers (e.g. S3) requires a special permissions to be able to list buckets or query their existence which might not be allowed. This flag will skip that check. Keep in mind that if that bucket does not exist, the whole backup operation will fail. 
+	SkipBucketVerification bool `json:"skipBucketVerification,omitempty"`
 }

@@ -41,4 +41,8 @@ type BackupOperationRequest struct {
 	Insecure bool `json:"insecure,omitempty"`
 	// Automatically creates a bucket if it does not exist. If a bucket does not exist, backup operation will fail. Defaults to false. 
 	CreateMissingBucket bool `json:"createMissingBucket,omitempty"`
+	// Do not check the existence of a bucket. Some storage providers (e.g. S3) requires a special permissions to be able to list buckets or query their existence which might not be allowed. This flag will skip that check. Keep in mind that if that bucket does not exist, the whole backup operation will fail. 
+	SkipBucketVerification bool `json:"skipBucketVerification,omitempty"`
+	// If set, a cluster topology file will be uploaded alongside a backup, defaults to false. This flag is implicitly set to true if a request is global - coordinator node will upload this file every time but no other nodes will. 
+	UploadClusterTopology bool `json:"uploadClusterTopology,omitempty"`
 }

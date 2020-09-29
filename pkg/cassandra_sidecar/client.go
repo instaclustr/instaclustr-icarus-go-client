@@ -51,6 +51,8 @@ type APIClient struct {
 
 	StatusApi *StatusApiService
 
+	TopologyApi *TopologyApiService
+
 	VersionApi *VersionApiService
 }
 
@@ -73,6 +75,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ConfigApi = (*ConfigApiService)(&c.common)
 	c.OperationsApi = (*OperationsApiService)(&c.common)
 	c.StatusApi = (*StatusApiService)(&c.common)
+	c.TopologyApi = (*TopologyApiService)(&c.common)
 	c.VersionApi = (*VersionApiService)(&c.common)
 
 	return c

@@ -26,6 +26,8 @@ Class | Method | HTTP request | Description
 *OperationsApi* | [**OperationsOperationIdGet**](docs/OperationsApi.md#operationsoperationidget) | **Get** /operations/{operationId} | gets operation by its ID
 *OperationsApi* | [**OperationsPost**](docs/OperationsApi.md#operationspost) | **Post** /operations | Submits an operation to this Sidecar
 *StatusApi* | [**StatusGet**](docs/StatusApi.md#statusget) | **Get** /status | returns a state of a Cassandra node
+*TopologyApi* | [**TopologyDcGet**](docs/TopologyApi.md#topologydcget) | **Get** /topology/{dc} | returns topology of a datacenter of a cluster
+*TopologyApi* | [**TopologyGet**](docs/TopologyApi.md#topologyget) | **Get** /topology | returns topology of a cluster as seen from this node
 *VersionApi* | [**VersionCassandraGet**](docs/VersionApi.md#versioncassandraget) | **Get** /version/cassandra | returns version of Cassandra node
 *VersionApi* | [**VersionGet**](docs/VersionApi.md#versionget) | **Get** /version | returns version of Cassandra Sidecar itself
 *VersionApi* | [**VersionSchemaGet**](docs/VersionApi.md#versionschemaget) | **Get** /version/schema | returns schema version this Cassandra node is on, same as calling StorageServiceMBean#getSchemaVersion
@@ -45,6 +47,7 @@ Class | Method | HTTP request | Description
  - [CassandraVersion](docs/CassandraVersion.md)
  - [CleanupOperationRequest](docs/CleanupOperationRequest.md)
  - [CleanupOperationResponse](docs/CleanupOperationResponse.md)
+ - [ClusterTopology](docs/ClusterTopology.md)
  - [DataRate](docs/DataRate.md)
  - [DecommissionOperationRequest](docs/DecommissionOperationRequest.md)
  - [DecommissionOperationResponse](docs/DecommissionOperationResponse.md)
@@ -55,6 +58,7 @@ Class | Method | HTTP request | Description
  - [ImportOperationRequest](docs/ImportOperationRequest.md)
  - [ImportOperationResponse](docs/ImportOperationResponse.md)
  - [InlineResponse200](docs/InlineResponse200.md)
+ - [NodeTopology](docs/NodeTopology.md)
  - [OneOfbody](docs/OneOfbody.md)
  - [OneOfinlineResponse200](docs/OneOfinlineResponse200.md)
  - [RebuildOperationRequest](docs/RebuildOperationRequest.md)

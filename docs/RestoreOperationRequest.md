@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **K8sSecretName** | **string** | name of Kubernetes secret from which credentials used for the communication to cloud storage providers are read, if not specified, secret name to be read will be automatically derived in form &#x27;cassandra-backup-restore-secret-cluster-{name-of-cluster}&#x27;. These secrets are used only in case protocol in storageLocation is gcp, azure or s3.  | [optional] [default to null]
 **Timeout** | **int32** | number of hours to wait until restore is considered failed if not finished already  | [optional] [default to null]
 **ResolveHostIdFromTopology** | **bool** | if set to true, host id of node to restore will be resolved from remote topology file located in a bucket by translating it from provided nodeId of storageLocation field  | [optional] [default to null]
+**SkipBucketVerification** | **bool** | Do not check the existence of a bucket. Some storage providers (e.g. S3) requires a special permissions to be able to list buckets or query their existence which might not be allowed. This flag will skip that check. Keep in mind that if that bucket does not exist, the whole backup operation will fail.  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
