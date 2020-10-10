@@ -16,5 +16,5 @@ rm -fr ${tmp_dir}/instaclustr_icarus/.swagger-codegen \
   && rm -fr ${tmp_dir}/instaclustr_icarus.conf.json
 
 echo Moving documentations files to root dirs
-rm -fr ${tmp_dir}/docs && rm -rf ./docs && mv ${tmp_dir}/instaclustr_icarus/docs .
-rm -fr ${tmp_dir}/README.md && mv ${tmp_dir}/instaclustr_icarus/README.md .
+rm -rf ${tmp_dir}/docs && rm -rf ./docs && mv ${tmp_dir}/instaclustr-icarus/docs .
+rm -fr ${tmp_dir}/README.md && mv ${tmp_dir}/instaclustr-icarus/README.md .
