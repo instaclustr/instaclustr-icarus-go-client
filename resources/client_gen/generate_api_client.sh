@@ -5,7 +5,7 @@
 
 # Params
 echo Exporting Params
-export client_name=${client_name:-cassandra_sidecar}
+export client_name=${client_name:-instaclustr-icarus}
 
 export codegen_filename=${codegen_filename:-swagger-codegen-cli-3.0.20.jar}
 export tmp_dir=${tmp_dir:-${HOME}/Projects/tmp}
