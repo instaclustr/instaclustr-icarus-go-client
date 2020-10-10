@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost:4567*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OperationsGet**](OperationsApi.md#OperationsGet) | **Get** /operations | All operations of Sidecar
+[**OperationsGet**](OperationsApi.md#OperationsGet) | **Get** /operations | All operations of Icarus
 [**OperationsOperationIdGet**](OperationsApi.md#OperationsOperationIdGet) | **Get** /operations/{operationId} | gets operation by its ID
 [**OperationsPost**](OperationsApi.md#OperationsPost) | **Post** /operations | Submits an operation to this Sidecar
 
 # **OperationsGet**
 > []Object OperationsGet(ctx, optional)
-All operations of Sidecar
+All operations of Icarus
 
 ### Required Parameters
 
