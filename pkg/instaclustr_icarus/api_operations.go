@@ -12,11 +12,13 @@ package instaclustr_icarus
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"fmt"
+
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -31,7 +33,7 @@ OperationsApiService All operations of Icarus
  * @param optional nil or *OperationsApiOperationsGetOpts - Optional Parameters:
      * @param "Type_" (optional.Interface of []string) -  type of operations to filter on
      * @param "Status" (optional.Interface of []string) -  status of operations to filter on
-@return []Object
+@return []interface{}
 */
 
 type OperationsApiOperationsGetOpts struct { 
@@ -39,13 +41,13 @@ type OperationsApiOperationsGetOpts struct {
 	Status optional.Interface
 }
 
-func (a *OperationsApiService) OperationsGet(ctx context.Context, localVarOptionals *OperationsApiOperationsGetOpts) ([]Object, *http.Response, error) {
+func (a *OperationsApiService) OperationsGet(ctx context.Context, localVarOptionals *OperationsApiOperationsGetOpts) ([]interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue []Object
+		localVarReturnValue []interface{}
 	)
 
 	// create path and map variables
@@ -108,7 +110,7 @@ func (a *OperationsApiService) OperationsGet(ctx context.Context, localVarOption
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []Object
+			var v []interface{}
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -126,15 +128,15 @@ func (a *OperationsApiService) OperationsGet(ctx context.Context, localVarOption
 OperationsApiService gets operation by its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param operationId ID of operation to return
-@return InlineResponse200
+@return interface{}
 */
-func (a *OperationsApiService) OperationsOperationIdGet(ctx context.Context, operationId string) (InlineResponse200, *http.Response, error) {
+func (a *OperationsApiService) OperationsOperationIdGet(ctx context.Context, operationId string) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue InlineResponse200
+		localVarReturnValue interface{}
 	)
 
 	// create path and map variables
@@ -192,7 +194,7 @@ func (a *OperationsApiService) OperationsOperationIdGet(ctx context.Context, ope
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v InlineResponse200
+			var v interface{}
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -211,20 +213,20 @@ OperationsApiService Submits an operation to this Sidecar
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *OperationsApiOperationsPostOpts - Optional Parameters:
      * @param "Body" (optional.Interface of Body) - 
-@return InlineResponse200
+@return interface{}
 */
 
 type OperationsApiOperationsPostOpts struct { 
 	Body optional.Interface
 }
 
-func (a *OperationsApiService) OperationsPost(ctx context.Context, localVarOptionals *OperationsApiOperationsPostOpts) (InlineResponse200, *http.Response, error) {
+func (a *OperationsApiService) OperationsPost(ctx context.Context, localVarOptionals *OperationsApiOperationsPostOpts) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue InlineResponse200
+		localVarReturnValue interface{}
 	)
 
 	// create path and map variables
@@ -287,7 +289,7 @@ func (a *OperationsApiService) OperationsPost(ctx context.Context, localVarOptio
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v InlineResponse200
+			var v interface{}
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

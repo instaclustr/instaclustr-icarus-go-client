@@ -2,7 +2,6 @@ openapi: 3.0.3
 info:
   title: Instaclustr Icarus
   description: REST API for Instaclustr Icarus - a sidecar for Cassandra
-  termsOfService: https://github.com/instaclustr/instaclustr_icarus
   contact:
     email: support@instaclustr.com
   license:
@@ -11,7 +10,7 @@ info:
   version: 1.0.1
 externalDocs:
   description: Find out more about Instaclustr Icarus
-  url: https://github.com/instaclustr/instaclustr_icarus
+  url: https://github.com/instaclustr/instaclustr-icarus
 servers:
 - url: http://localhost:4567
   description: Default URL Icarsu is bound to when run alongside with a Cassandra
