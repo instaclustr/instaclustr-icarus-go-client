@@ -45,4 +45,5 @@ type BackupOperationRequest struct {
 	SkipBucketVerification bool `json:"skipBucketVerification,omitempty"`
 	// If set, a cluster topology file will be uploaded alongside a backup, defaults to false. This flag is implicitly set to true if a request is global - coordinator node will upload this file every time but no other nodes will. 
 	UploadClusterTopology bool `json:"uploadClusterTopology,omitempty"`
+	ProxySettings *ProxySettings `json:"proxySettings,omitempty"`
 }

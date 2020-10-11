@@ -45,6 +45,7 @@ type BackupOperationResponse struct {
 	SkipBucketVerification bool `json:"skipBucketVerification,omitempty"`
 	// If set, a cluster topology file will be uploaded alongside a backup, defaults to false. This flag is implicitly set to true if a request is global - coordinator node will upload this file every time but no other nodes will. 
 	UploadClusterTopology bool `json:"uploadClusterTopology,omitempty"`
+	ProxySettings *ProxySettings `json:"proxySettings,omitempty"`
 	// unique identifier of an operation, a random id is assigned to each operation after a request is submitted, from caller's perspective, an id is sent back as a response to his request so he can further query state of that operation, referencing id, by operations/{id} endpoint 
 	Id string `json:"id"`
 	// state of an operation, operation might be in various states, PENDING - this operation is pending for being submitted. RUNNING - this operation is actively doing its job, COMPLETED - this operation has finished successfully, CANCELLED - this operation was interrupted while being run, FAILED - this operation has finished errorneously 

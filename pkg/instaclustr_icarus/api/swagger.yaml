@@ -471,6 +471,8 @@ components:
           type: boolean
           description: |
             If set, a cluster topology file will be uploaded alongside a backup, defaults to false. This flag is implicitly set to true if a request is global - coordinator node will upload this file every time but no other nodes will.
+        proxySettings:
+          $ref: '#/components/schemas/ProxySettings'
       example: |
         {
           "type": "backup",
@@ -586,6 +588,8 @@ components:
           type: boolean
           description: |
             Do not check the existence of a bucket. Some storage providers (e.g. S3) requires a special permissions to be able to list buckets or query their existence which might not be allowed. This flag will skip that check. Keep in mind that if that bucket does not exist, the whole backup operation will fail.
+        proxySettings:
+          $ref: '#/components/schemas/ProxySettings'
       example:
         type: restore
         cassandraDirectory: /var/lib/cassandra
@@ -1025,6 +1029,28 @@ components:
       properties:
         exception:
           type: object
+    ProxySettings:
+      type: object
+      properties:
+        useProxy:
+          type: string
+          description: if specified, it will use proxy client configuration relevant
+            for S3 only.
+        proxyHost:
+          type: string
+          description: host for proxy, relevant for S3 only
+        proxyPort:
+          type: string
+          description: port for proxy, relevant for S3 only
+        proxyUsername:
+          type: string
+          description: username for proxy, relevant for S3 only
+        proxyPassword:
+          type: string
+          description: password for proxy, relevant for S3 only
+        proxyProtocol:
+          type: string
+          description: protocol for proxy, defaults to HTTPS, might be HTTP or HTTPS
     body:
       discriminator:
         propertyName: type

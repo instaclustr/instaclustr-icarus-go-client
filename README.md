@@ -63,6 +63,7 @@ Class | Method | HTTP request | Description
  - [NodeTopology](docs/NodeTopology.md)
  - [OneOfbody](docs/OneOfbody.md)
  - [OneOfinlineResponse200](docs/OneOfinlineResponse200.md)
+ - [ProxySettings](docs/ProxySettings.md)
  - [RebuildOperationRequest](docs/RebuildOperationRequest.md)
  - [RebuildOperationResponse](docs/RebuildOperationResponse.md)
  - [RefreshOperationRequest](docs/RefreshOperationRequest.md)
