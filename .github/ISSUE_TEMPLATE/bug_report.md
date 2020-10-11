@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve Sidecar Go client
+about: Create a report to help us improve Icarus Go client
 title: "[BUG]"
 labels: bug
 assignees: smiklosovic
