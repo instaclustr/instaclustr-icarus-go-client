@@ -9,10 +9,10 @@
  */
 package instaclustr_icarus
 
-// bandwidth used during uploads 
-type DataRate struct {
-	// quantified value of bandwidth, an integer 
-	Value int32 `json:"value,omitempty"`
-	// unit of 'data bandwidth' 
-	Unit string `json:"unit"`
+type Stacktrace struct {
+	MethodName string `json:"methodName,omitempty"`
+	FileName string `json:"fileName,omitempty"`
+	LineNumber float64 `json:"lineNumber,omitempty"`
+	ClassName string `json:"className,omitempty"`
+	NativeMethod bool `json:"nativeMethod,omitempty"`
 }

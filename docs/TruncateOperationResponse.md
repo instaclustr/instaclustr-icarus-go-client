@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **CreationTime** | [**time.Time**](time.Time.md) | timestamp telling when this operation was created on Sidecar&#x27;s side  | [default to null]
 **StartTime** | [**time.Time**](time.Time.md) | timestamp telling when this operation was started by Sidecar, if an operation is created, it does not necessarily mean that it will be started right away, in most cases it is the case but if e.g. ExecutorService is full on its working thread, an execution of an operation is postponed and start time is updated only after that  | [optional] [default to null]
 **CompletionTime** | [**time.Time**](time.Time.md) | timestamp telling when an operation has finished, irrelevant of its result, an operation can be failed and it would still have this field populated.  | [optional] [default to null]
-**FailureCause** | [***interface{}**](interface{}.md) | This field contains serialized java.lang.Throwable in case this operation has failed  | [optional] [default to null]
+**Errors** | [**[]ErrorObject**](ErrorObject.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

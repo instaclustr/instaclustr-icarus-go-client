@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 1.0.1
+  version: 1.0.2
 externalDocs:
   description: Find out more about Instaclustr Icarus
   url: https://github.com/instaclustr/instaclustr-icarus
@@ -379,10 +379,10 @@ components:
           description: |
             timestamp telling when an operation has finished, irrelevant of its result, an operation can be failed and it would still have this field populated.
           format: date-time
-        failureCause:
-          type: object
-          description: |
-            This field contains serialized java.lang.Throwable in case this operation has failed
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorObject'
       readOnly: true
     BackupOperationRequest:
       required:
@@ -1051,6 +1051,41 @@ components:
         proxyProtocol:
           type: string
           description: protocol for proxy, defaults to HTTPS, might be HTTP or HTTPS
+    Stacktrace:
+      type: object
+      properties:
+        methodName:
+          type: string
+        fileName:
+          type: string
+        lineNumber:
+          type: number
+        className:
+          type: string
+        nativeMethod:
+          type: boolean
+    Throwable:
+      type: object
+      properties:
+        cause:
+          $ref: '#/components/schemas/Throwable_cause'
+        stacktrace:
+          $ref: '#/components/schemas/Stacktrace'
+        message:
+          type: string
+        localizedMessage:
+          type: string
+    ErrorObject:
+      type: object
+      properties:
+        source:
+          type: string
+          description: hostame of a node where this error has occurred
+        message:
+          type: string
+          description: message explaining the error
+        throwable:
+          $ref: '#/components/schemas/Throwable'
     body:
       discriminator:
         propertyName: type
@@ -1097,3 +1132,14 @@ components:
       - $ref: '#/components/schemas/TruncateOperationResponse'
       - $ref: '#/components/schemas/BackupOperationResponse'
       - $ref: '#/components/schemas/RestoreOperationResponse'
+    Throwable_cause:
+      type: object
+      properties:
+        stacktrace:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stacktrace'
+        message:
+          type: string
+        localizedMessage:
+          type: string
