@@ -1057,7 +1057,7 @@ components:
         fileName:
           type: string
         lineNumber:
-          type: number
+          type: string
         className:
           type: string
         nativeMethod:
