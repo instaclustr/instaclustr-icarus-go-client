@@ -1075,6 +1075,10 @@ components:
           type: string
         localizedMessage:
           type: string
+        suppressed:
+          type: array
+          items:
+            $ref: '#/components/schemas/Throwable'
     ErrorObject:
       type: object
       properties:
@@ -1143,3 +1147,7 @@ components:
           type: string
         localizedMessage:
           type: string
+        suppressed:
+          type: array
+          items:
+            $ref: '#/components/schemas/Throwable'
