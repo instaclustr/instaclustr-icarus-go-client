@@ -10,7 +10,7 @@
 package instaclustr_icarus
 
 type Throwable struct {
-	Cause []Throwable `json:"cause,omitempty"`
+	Cause *Throwable `json:"cause,omitempty"`
 	Stacktrace []Stacktrace `json:"stacktrace,omitempty"`
 	Message string `json:"message,omitempty"`
 	LocalizedMessage string `json:"localizedMessage,omitempty"`

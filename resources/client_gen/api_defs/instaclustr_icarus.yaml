@@ -1066,9 +1066,7 @@ components:
       type: object
       properties:
         cause:
-          type: array
-          items:
-            $ref: '#/components/schemas/Throwable'
+          $ref: '#/components/schemas/Throwable'
         stacktrace:
           type: array
           items:
