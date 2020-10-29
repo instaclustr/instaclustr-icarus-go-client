@@ -12,7 +12,7 @@ package instaclustr_icarus
 type Stacktrace struct {
 	MethodName string `json:"methodName,omitempty"`
 	FileName string `json:"fileName,omitempty"`
-	LineNumber string `json:"lineNumber,omitempty"`
+	LineNumber int32 `json:"lineNumber,omitempty"`
 	ClassName string `json:"className,omitempty"`
 	NativeMethod bool `json:"nativeMethod,omitempty"`
 }

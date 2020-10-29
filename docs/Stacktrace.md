@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MethodName** | **string** |  | [optional] [default to null]
 **FileName** | **string** |  | [optional] [default to null]
-**LineNumber** | **string** |  | [optional] [default to null]
+**LineNumber** | **int32** |  | [optional] [default to null]
 **ClassName** | **string** |  | [optional] [default to null]
 **NativeMethod** | **bool** |  | [optional] [default to null]
 

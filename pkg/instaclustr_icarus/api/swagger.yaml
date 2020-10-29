@@ -1059,7 +1059,7 @@ components:
         fileName:
           type: string
         lineNumber:
-          type: string
+          type: integer
         className:
           type: string
         nativeMethod:
