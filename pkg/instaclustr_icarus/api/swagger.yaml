@@ -1068,9 +1068,13 @@ components:
       type: object
       properties:
         cause:
-          $ref: '#/components/schemas/Throwable_cause'
+          type: array
+          items:
+            $ref: '#/components/schemas/Throwable'
         stacktrace:
-          $ref: '#/components/schemas/Stacktrace'
+          type: array
+          items:
+            $ref: '#/components/schemas/Stacktrace'
         message:
           type: string
         localizedMessage:
@@ -1136,18 +1140,3 @@ components:
       - $ref: '#/components/schemas/TruncateOperationResponse'
       - $ref: '#/components/schemas/BackupOperationResponse'
       - $ref: '#/components/schemas/RestoreOperationResponse'
-    Throwable_cause:
-      type: object
-      properties:
-        stacktrace:
-          type: array
-          items:
-            $ref: '#/components/schemas/Stacktrace'
-        message:
-          type: string
-        localizedMessage:
-          type: string
-        suppressed:
-          type: array
-          items:
-            $ref: '#/components/schemas/Throwable'

@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cause** | [***ThrowableCause**](Throwable_cause.md) |  | [optional] [default to null]
-**Stacktrace** | [***Stacktrace**](Stacktrace.md) |  | [optional] [default to null]
+**Cause** | [**[]Throwable**](Throwable.md) |  | [optional] [default to null]
+**Stacktrace** | [**[]Stacktrace**](Stacktrace.md) |  | [optional] [default to null]
 **Message** | **string** |  | [optional] [default to null]
 **LocalizedMessage** | **string** |  | [optional] [default to null]
 **Suppressed** | [**[]Throwable**](Throwable.md) |  | [optional] [default to null]

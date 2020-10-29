@@ -78,7 +78,6 @@ Class | Method | HTTP request | Description
  - [SidecarVersion](docs/SidecarVersion.md)
  - [Stacktrace](docs/Stacktrace.md)
  - [Throwable](docs/Throwable.md)
- - [ThrowableCause](docs/ThrowableCause.md)
  - [TokenRange](docs/TokenRange.md)
  - [TruncateOperationRequest](docs/TruncateOperationRequest.md)
  - [TruncateOperationResponse](docs/TruncateOperationResponse.md)
