@@ -1076,12 +1076,20 @@ components:
               type: string
             localizedMessage:
               type: string
+            suppressed:
+              type: array
+              items:
+                $ref: '#/components/schemas/Throwable'
         stacktrace:
           $ref: '#/components/schemas/Stacktrace'
         message:
           type: string
         localizedMessage:
           type: string
+        suppressed:
+          type: array
+          items:
+            $ref: '#/components/schemas/Throwable'
     ErrorObject:
       type: object
       properties:
