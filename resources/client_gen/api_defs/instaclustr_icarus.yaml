@@ -1066,22 +1066,13 @@ components:
       type: object
       properties:
         cause:
-          type: object
-          properties:
-            stacktrace:
-              type: array
-              items:
-                $ref: '#/components/schemas/Stacktrace'
-            message:
-              type: string
-            localizedMessage:
-              type: string
-            suppressed:
-              type: array
-              items:
-                $ref: '#/components/schemas/Throwable'
+          type: array
+          items:
+            $ref: '#/components/schemas/Throwable'
         stacktrace:
-          $ref: '#/components/schemas/Stacktrace'
+          type: array
+          items:
+            $ref: '#/components/schemas/Stacktrace'
         message:
           type: string
         localizedMessage:
