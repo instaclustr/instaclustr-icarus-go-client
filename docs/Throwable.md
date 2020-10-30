@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Cause** | [***Throwable**](Throwable.md) |  | [optional] [default to null]
-**Stacktrace** | [**[]Stacktrace**](Stacktrace.md) |  | [optional] [default to null]
+**StackTrace** | [**[]StackTrace**](StackTrace.md) |  | [optional] [default to null]
 **Message** | **string** |  | [optional] [default to null]
 **LocalizedMessage** | **string** |  | [optional] [default to null]
 **Suppressed** | [**[]Throwable**](Throwable.md) |  | [optional] [default to null]

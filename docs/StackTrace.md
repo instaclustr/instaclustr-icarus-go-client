@@ -1,4 +1,4 @@
-# Stacktrace
+# StackTrace
 
 ## Properties
 Name | Type | Description | Notes

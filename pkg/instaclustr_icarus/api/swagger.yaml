@@ -1051,7 +1051,7 @@ components:
         proxyProtocol:
           type: string
           description: protocol for proxy, defaults to HTTPS, might be HTTP or HTTPS
-    Stacktrace:
+    StackTrace:
       type: object
       properties:
         methodName:
@@ -1069,10 +1069,10 @@ components:
       properties:
         cause:
           $ref: '#/components/schemas/Throwable'
-        stacktrace:
+        stackTrace:
           type: array
           items:
-            $ref: '#/components/schemas/Stacktrace'
+            $ref: '#/components/schemas/StackTrace'
         message:
           type: string
         localizedMessage:

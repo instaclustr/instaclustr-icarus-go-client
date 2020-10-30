@@ -9,7 +9,7 @@
  */
 package instaclustr_icarus
 
-type Stacktrace struct {
+type StackTrace struct {
 	MethodName string `json:"methodName,omitempty"`
 	FileName string `json:"fileName,omitempty"`
 	LineNumber int32 `json:"lineNumber,omitempty"`
