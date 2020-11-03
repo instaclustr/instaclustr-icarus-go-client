@@ -76,8 +76,6 @@ Class | Method | HTTP request | Description
  - [ScrubOperationRequest](docs/ScrubOperationRequest.md)
  - [ScrubOperationResponse](docs/ScrubOperationResponse.md)
  - [SidecarVersion](docs/SidecarVersion.md)
- - [StackTrace](docs/StackTrace.md)
- - [Throwable](docs/Throwable.md)
  - [TokenRange](docs/TokenRange.md)
  - [TruncateOperationRequest](docs/TruncateOperationRequest.md)
  - [TruncateOperationResponse](docs/TruncateOperationResponse.md)

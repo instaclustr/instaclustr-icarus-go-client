@@ -14,5 +14,4 @@ type ErrorObject struct {
 	Source string `json:"source,omitempty"`
 	// message explaining the error
 	Message string `json:"message,omitempty"`
-	Throwable *Throwable `json:"throwable,omitempty"`
 }
