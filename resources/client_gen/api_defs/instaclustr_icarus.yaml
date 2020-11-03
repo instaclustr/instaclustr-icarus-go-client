@@ -1049,36 +1049,6 @@ components:
         proxyProtocol:
           type: string
           description: 'protocol for proxy, defaults to HTTPS, might be HTTP or HTTPS'
-    StackTrace:
-      type: object
-      properties:
-        methodName:
-          type: string
-        fileName:
-          type: string
-        lineNumber:
-          type: integer
-        className:
-          type: string
-        nativeMethod:
-          type: boolean
-    Throwable:
-      type: object
-      properties:
-        cause:
-          $ref: '#/components/schemas/Throwable'
-        stackTrace:
-          type: array
-          items:
-            $ref: '#/components/schemas/StackTrace'
-        message:
-          type: string
-        localizedMessage:
-          type: string
-        suppressed:
-          type: array
-          items:
-            $ref: '#/components/schemas/Throwable'
     ErrorObject:
       type: object
       properties:
@@ -1088,5 +1058,3 @@ components:
         message:
           type: string
           description: message explaining the error
-        throwable:
-          $ref: '#/components/schemas/Throwable'
