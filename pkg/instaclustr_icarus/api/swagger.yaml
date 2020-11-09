@@ -13,7 +13,7 @@ externalDocs:
   url: https://github.com/instaclustr/instaclustr-icarus
 servers:
 - url: http://localhost:4567
-  description: Default URL Icarsu is bound to when run alongside with a Cassandra
+  description: Default URL Icarus is bound to when run alongside with a Cassandra
     node
 tags:
 - name: operations
