@@ -56,4 +56,6 @@ type RestoreOperationRequest struct {
 	// Do not check the existence of a bucket. Some storage providers (e.g. S3) requires a special permissions to be able to list buckets or query their existence which might not be allowed. This flag will skip that check. Keep in mind that if that bucket does not exist, the whole backup operation will fail. 
 	SkipBucketVerification bool `json:"skipBucketVerification,omitempty"`
 	ProxySettings *ProxySettings `json:"proxySettings,omitempty"`
+	// Map of key and values where keys and values are in format \"keyspace.table\", if key is \"ks1.tb1\" and value is \"ks1.tb2\", it means that upon restore, table ks1.tb1 will be restored into table ks1.tb2. This in practice means that table ks1.tb2 will be truncated and populated with data from ks1.tb1. The source table, ks1.tb1, will not be touched. It is expected that user knows that schema of both tables is compatible. There is not any check done in this regard. 
+	Rename map[string]string `json:"rename,omitempty"`
 }

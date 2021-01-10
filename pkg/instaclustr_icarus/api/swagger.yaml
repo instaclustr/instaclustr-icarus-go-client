@@ -590,6 +590,12 @@ components:
             Do not check the existence of a bucket. Some storage providers (e.g. S3) requires a special permissions to be able to list buckets or query their existence which might not be allowed. This flag will skip that check. Keep in mind that if that bucket does not exist, the whole backup operation will fail.
         proxySettings:
           $ref: '#/components/schemas/ProxySettings'
+        rename:
+          type: object
+          additionalProperties:
+            type: string
+          description: |
+            Map of key and values where keys and values are in format "keyspace.table", if key is "ks1.tb1" and value is "ks1.tb2", it means that upon restore, table ks1.tb1 will be restored into table ks1.tb2. This in practice means that table ks1.tb2 will be truncated and populated with data from ks1.tb1. The source table, ks1.tb1, will not be touched. It is expected that user knows that schema of both tables is compatible. There is not any check done in this regard.
       example:
         type: restore
         cassandraDirectory: /var/lib/cassandra
@@ -1051,36 +1057,6 @@ components:
         proxyProtocol:
           type: string
           description: protocol for proxy, defaults to HTTPS, might be HTTP or HTTPS
-    StackTrace:
-      type: object
-      properties:
-        methodName:
-          type: string
-        fileName:
-          type: string
-        lineNumber:
-          type: integer
-        className:
-          type: string
-        nativeMethod:
-          type: boolean
-    Throwable:
-      type: object
-      properties:
-        cause:
-          $ref: '#/components/schemas/Throwable'
-        stackTrace:
-          type: array
-          items:
-            $ref: '#/components/schemas/StackTrace'
-        message:
-          type: string
-        localizedMessage:
-          type: string
-        suppressed:
-          type: array
-          items:
-            $ref: '#/components/schemas/Throwable'
     ErrorObject:
       type: object
       properties:
@@ -1090,8 +1066,6 @@ components:
         message:
           type: string
           description: message explaining the error
-        throwable:
-          $ref: '#/components/schemas/Throwable'
     body:
       discriminator:
         propertyName: type
