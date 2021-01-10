@@ -642,6 +642,10 @@ components:
             Do not check the existence of a bucket. Some storage providers (e.g. S3) requires a special permissions to be able to list buckets or query their existence which might not be allowed. This flag will skip that check. Keep in mind that if that bucket does not exist, the whole backup operation will fail.
         proxySettings:
           $ref: '#/components/schemas/ProxySettings'
+        rename:
+          type: object
+          additionalProperties:
+            type: string
     ImportOperationRequest:
       type: object
       description: |
