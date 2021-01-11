@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   description: REST API for Instaclustr Icarus - a sidecar for Cassandra
-  version: 1.0.2
+  version: 1.0.3
   title: Instaclustr Icarus
   contact:
     email: support@instaclustr.com
