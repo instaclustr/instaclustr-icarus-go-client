@@ -484,6 +484,7 @@ components:
         }
     RestoreOperationRequest:
       required:
+      - restorationStrategyType
       - snapshotTag
       - storageLocation
       - type

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **SnapshotTag** | **string** | name of snapshot to restore  | [default to null]
 **Entities** | **string** | similar to field in backup request, when empty, all entities in given snapshot will be restored  | [optional] [default to null]
 **UpdateCassandraYaml** | **bool** | flag telling if cassandra.yaml should be updated with initial_tokens, relevant only in case of IN_PLACE strategy  | [optional] [default to null]
-**RestorationStrategyType** | **string** | strategy telling how we should go about restoration, please refer to details in backup and sidecar documentation  | [optional] [default to null]
+**RestorationStrategyType** | **string** | strategy telling how we should go about restoration, please refer to details in backup and sidecar documentation  | [default to null]
 **RestorationPhase** | **string** | phase telling what should we do, this field has to be set just once as DOWNLOAD if globalRequest if true and coordinator of that request will take care of all other phases automatically on its own  | [optional] [default to null]
 **NoDeleteTruncates** | **bool** | flag saying if we should not delete truncated SSTables after they are imported, as part of CLEANUP phase, defaults to false  | [optional] [default to null]
 **NoDeleteDownloads** | **bool** | flag saying if we should not delete downloaded SSTables from remote location, as part of CLEANUP phase, defaults to false  | [optional] [default to null]

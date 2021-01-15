@@ -29,7 +29,7 @@ type RestoreOperationResponse struct {
 	// flag telling if cassandra.yaml should be updated with initial_tokens, relevant only in case of IN_PLACE strategy 
 	UpdateCassandraYaml bool `json:"updateCassandraYaml,omitempty"`
 	// strategy telling how we should go about restoration, please refer to details in backup and sidecar documentation 
-	RestorationStrategyType string `json:"restorationStrategyType,omitempty"`
+	RestorationStrategyType string `json:"restorationStrategyType"`
 	// phase telling what should we do, this field has to be set just once as DOWNLOAD if globalRequest if true and coordinator of that request will take care of all other phases automatically on its own 
 	RestorationPhase string `json:"restorationPhase,omitempty"`
 	// flag saying if we should not delete truncated SSTables after they are imported, as part of CLEANUP phase, defaults to false 
