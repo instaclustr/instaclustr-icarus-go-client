@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **SkipBucketVerification** | **bool** | Do not check the existence of a bucket. Some storage providers (e.g. S3) requires a special permissions to be able to list buckets or query their existence which might not be allowed. This flag will skip that check. Keep in mind that if that bucket does not exist, the whole backup operation will fail.  | [optional] [default to null]
 **UploadClusterTopology** | **bool** | If set, a cluster topology file will be uploaded alongside a backup, defaults to false. This flag is implicitly set to true if a request is global - coordinator node will upload this file every time but no other nodes will.  | [optional] [default to null]
 **ProxySettings** | [***ProxySettings**](ProxySettings.md) |  | [optional] [default to null]
+**Retry** | [***Retry**](Retry.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -73,6 +73,7 @@ Class | Method | HTTP request | Description
  - [RestartOperationResponse](docs/RestartOperationResponse.md)
  - [RestoreOperationRequest](docs/RestoreOperationRequest.md)
  - [RestoreOperationResponse](docs/RestoreOperationResponse.md)
+ - [Retry](docs/Retry.md)
  - [ScrubOperationRequest](docs/ScrubOperationRequest.md)
  - [ScrubOperationResponse](docs/ScrubOperationResponse.md)
  - [SidecarVersion](docs/SidecarVersion.md)
