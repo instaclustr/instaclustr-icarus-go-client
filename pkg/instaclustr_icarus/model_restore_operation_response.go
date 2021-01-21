@@ -59,6 +59,8 @@ type RestoreOperationResponse struct {
 	Retry *Retry `json:"retry,omitempty"`
 	// Map of key and values where keys and values are in format \"keyspace.table\", if key is \"ks1.tb1\" and value is \"ks1.tb2\", it means that upon restore, table ks1.tb1 will be restored into table ks1.tb2. This in practice means that table ks1.tb2 will be truncated and populated with data from ks1.tb1. The source table, ks1.tb1, will not be touched. It is expected that user knows that schema of both tables is compatible. There is not any check done in this regard. 
 	Rename map[string]string `json:"rename,omitempty"`
+	// If set to true, when a request is global request, it will execute globally just that one phase and it will not advance the restoration execution to other phases. By doing this, an operator might, for example, execute just a cluster-wide download phase but no other phases. 
+	SinglePhase bool `json:"singlePhase,omitempty"`
 	// unique identifier of an operation, a random id is assigned to each operation after a request is submitted, from caller's perspective, an id is sent back as a response to his request so he can further query state of that operation, referencing id, by operations/{id} endpoint 
 	Id string `json:"id"`
 	// state of an operation, operation might be in various states, PENDING - this operation is pending for being submitted. RUNNING - this operation is actively doing its job, COMPLETED - this operation has finished successfully, CANCELLED - this operation was interrupted while being run, FAILED - this operation has finished errorneously 

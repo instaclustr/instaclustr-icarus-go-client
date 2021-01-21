@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **ProxySettings** | [***ProxySettings**](ProxySettings.md) |  | [optional] [default to null]
 **Retry** | [***Retry**](Retry.md) |  | [optional] [default to null]
 **Rename** | **map[string]string** | Map of key and values where keys and values are in format \&quot;keyspace.table\&quot;, if key is \&quot;ks1.tb1\&quot; and value is \&quot;ks1.tb2\&quot;, it means that upon restore, table ks1.tb1 will be restored into table ks1.tb2. This in practice means that table ks1.tb2 will be truncated and populated with data from ks1.tb1. The source table, ks1.tb1, will not be touched. It is expected that user knows that schema of both tables is compatible. There is not any check done in this regard.  | [optional] [default to null]
+**SinglePhase** | **bool** | If set to true, when a request is global request, it will execute globally just that one phase and it will not advance the restoration execution to other phases. By doing this, an operator might, for example, execute just a cluster-wide download phase but no other phases.  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

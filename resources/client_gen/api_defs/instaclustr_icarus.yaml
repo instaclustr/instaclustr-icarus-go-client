@@ -656,9 +656,9 @@ components:
         singlePhase:
           type: boolean
           description: |
-            when set to true, when a request is global request, it will execute
+            If set to true, when a request is global request, it will execute
             globally just that one phase and it will not advance the restoration
-            execution to other phases. By doing this, on operator might, for example,
+            execution to other phases. By doing this, an operator might, for example,
             execute just a cluster-wide download phase but no other phases.
     Retry:
       type: object
