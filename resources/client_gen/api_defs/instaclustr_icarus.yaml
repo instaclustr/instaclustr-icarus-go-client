@@ -639,6 +639,10 @@ components:
           description: |
             if set to true, host id of node to restore will be resolved from remote topology file located in a bucket by translating it from provided
             nodeId of storageLocation field
+        insecure:
+          type: boolean
+          description: |
+            Relevant during upload to S3-like bucket only. If true, communication is done via HTTP instead of HTTPS. Defaults to false.
         skipBucketVerification:
           type: boolean
           description: |
