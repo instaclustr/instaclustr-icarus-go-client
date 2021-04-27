@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   description: REST API for Instaclustr Icarus - a sidecar for Cassandra
-  version: 1.0.5
+  version: 1.0.6
   title: Instaclustr Icarus
   contact:
     email: support@instaclustr.com
@@ -664,6 +664,12 @@ components:
             globally just that one phase and it will not advance the restoration
             execution to other phases. By doing this, an operator might, for example,
             execute just a cluster-wide download phase but no other phases.
+        dc:
+          type: string
+          description: |
+            Name of datacenter(s) against which restore will be done.
+            It means that nodes in a different DC will not receive restore requests.
+            Multiple dcs are separated by comma.
     Retry:
       type: object
       description: |
