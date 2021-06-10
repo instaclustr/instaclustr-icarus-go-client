@@ -521,6 +521,10 @@ components:
           $ref: '#/components/schemas/ProxySettings'
         retry:
           $ref: '#/components/schemas/Retry'
+        skipRefreshing:
+          type: boolean
+          description: |
+            If set to true, refreshment of an object in a remote bucket (e.g. for s3) will be skipped. This might help upon backuping to specific s3 storage providers like Dell ECS storage. You will also skip versioning creating new versions when turned off as refreshment creates new version of files as a side effect.
     RestoreOperationRequest:
       type: object
       required:
