@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **UploadClusterTopology** | **bool** | If set, a cluster topology file will be uploaded alongside a backup, defaults to false. This flag is implicitly set to true if a request is global - coordinator node will upload this file every time but no other nodes will.  | [optional] [default to null]
 **ProxySettings** | [***ProxySettings**](ProxySettings.md) |  | [optional] [default to null]
 **Retry** | [***Retry**](Retry.md) |  | [optional] [default to null]
+**SkipRefreshing** | **bool** | If set to true, refreshment of an object in a remote bucket (e.g. for s3) will be skipped. This might help upon backuping to specific s3 storage providers like Dell ECS storage. You will also skip versioning creating new versions when turned off as refreshment creates new version of files as a side effect.  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

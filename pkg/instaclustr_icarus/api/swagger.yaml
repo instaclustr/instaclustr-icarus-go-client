@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 1.0.6
+  version: 1.0.7
 externalDocs:
   description: Find out more about Instaclustr Icarus
   url: https://github.com/instaclustr/instaclustr-icarus
@@ -475,6 +475,10 @@ components:
           $ref: '#/components/schemas/ProxySettings'
         retry:
           $ref: '#/components/schemas/Retry'
+        skipRefreshing:
+          type: boolean
+          description: |
+            If set to true, refreshment of an object in a remote bucket (e.g. for s3) will be skipped. This might help upon backuping to specific s3 storage providers like Dell ECS storage. You will also skip versioning creating new versions when turned off as refreshment creates new version of files as a side effect.
       example: |
         {
           "type": "backup",
